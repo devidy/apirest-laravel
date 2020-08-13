@@ -18,8 +18,8 @@ class CreateFuncionariosTable extends Migration
             $table->string('name', 100);
             $table->string('cpf', 20);
             $table->datetime('admissao');
-            $table->datetime('demissao');
-            $table->int('status');
+            $table->datetime('demissao')->default(null);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
