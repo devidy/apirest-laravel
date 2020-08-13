@@ -16,10 +16,10 @@ class CreateFuncionariosTable extends Migration
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
-            $table->integer('cpf');
-            $table->date('admissao');
-            $table->date('demissao');
-            $table->char('status', 1);
+            $table->string('cpf', 20);
+            $table->datetime('admissao');
+            $table->datetime('demissao');
+            $table->int('status');
             $table->timestamps();
         });
     }
