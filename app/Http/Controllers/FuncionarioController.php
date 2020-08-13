@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Component\HttpFoundation\Response;
 
 class FuncionarioController extends Controller
@@ -26,7 +27,13 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            return Funcionario::create($request->all());
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
