@@ -37,7 +37,12 @@ class FuncionarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        if($funcionario) {
+            return response()->json($funcionario, Response::HTTP_FOUND);
+        }
+
+        return response()->json(['message' => 'Nao encontrado'], Response::HTTP_NOT_FOUND);
     }
 
     /**
