@@ -14,7 +14,7 @@ trait ApiException {
      * @param [type] $e
      * @return void
      */
-    public function getJsonException($request, $e)
+    protected function getJsonException($request, $e)
     {
         if ($e instanceof ModelNotFoundException) {
             return $this->notFoundException();
@@ -32,7 +32,7 @@ trait ApiException {
      *
      * @return void
      */
-    public function notFoundException()
+    protected function notFoundException()
     {
         return $this->getResponse(
             "Recurso não encontrado",
@@ -46,7 +46,7 @@ trait ApiException {
      *
      * @return void
      */
-    public function genericException()
+    protected function genericException()
     {
         return $this->getResponse(
             "Erro interno no servidor",
@@ -77,7 +77,7 @@ trait ApiException {
      * @param [type] $status
      * @return void
      */
-    public function getResponse($message, $code, $status)
+    protected function getResponse($message, $code, $status)
     {
         return response()->json([
             "errors" => [
