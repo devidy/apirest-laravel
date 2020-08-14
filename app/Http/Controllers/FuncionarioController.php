@@ -61,7 +61,19 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        if(!$funcionario) {
+            return response()->json(['message' => 'Nao encontrado'], Response::HTTP_NOT_FOUND);
+        }
+
+        try {
+            $funcionario->update($request->all());
+            return response()->json(['message' => 'Atualizado'], Response::HTTP_OK);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
