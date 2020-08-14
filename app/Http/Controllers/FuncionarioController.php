@@ -42,14 +42,9 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Funcionario $funcionario)
     {
-        $funcionario = Funcionario::find($id);
-        if($funcionario) {
-            return response()->json($funcionario, Response::HTTP_FOUND);
-        }
-
-        return response()->json(['message' => 'Nao encontrado'], Response::HTTP_NOT_FOUND);
+        return $funcionario;
     }
 
     /**
@@ -59,13 +54,8 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Funcionario $funcionario)
     {
-        $funcionario = Funcionario::find($id);
-        if(!$funcionario) {
-            return response()->json(['message' => 'Nao encontrado'], Response::HTTP_NOT_FOUND);
-        }
-
         try {
             $funcionario->update($request->all());
             return response()->json(['message' => 'Atualizado'], Response::HTTP_OK);
@@ -82,13 +72,8 @@ class FuncionarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Funcionario $funcionario)
     {
-        $funcionario = Funcionario::find($id);
-        if(!$funcionario) {
-            return response()->json(['message' => 'Nao encontrado'], Response::HTTP_NOT_FOUND);
-        }
-
         try {
             $funcionario->delete();
             return response()->json(['message' => 'Deletado'], Response::HTTP_OK);
