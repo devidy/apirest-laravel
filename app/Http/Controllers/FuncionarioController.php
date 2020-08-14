@@ -16,9 +16,12 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(new FuncionarioCollection(Funcionario::get()), Response::HTTP_OK);
+        $funcionarios = Funcionario::paginate(2);
+        return (new FuncionarioCollection($funcionarios))
+                    ->response()
+                    ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
