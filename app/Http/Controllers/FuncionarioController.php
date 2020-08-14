@@ -84,6 +84,18 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $funcionario = Funcionario::find($id);
+        if(!$funcionario) {
+            return response()->json(['message' => 'Nao encontrado'], Response::HTTP_NOT_FOUND);
+        }
+
+        try {
+            $funcionario->delete();
+            return response()->json(['message' => 'Deletado'], Response::HTTP_OK);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }
