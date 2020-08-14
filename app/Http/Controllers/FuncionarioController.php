@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FuncionarioRequest;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\Funcionario as FuncionarioResource;
 
 class FuncionarioController extends Controller
 {
@@ -39,7 +39,7 @@ class FuncionarioController extends Controller
      */
     public function show(Funcionario $funcionario)
     {
-        return $funcionario;
+        return new FuncionarioResource($funcionario);
     }
 
     /**
