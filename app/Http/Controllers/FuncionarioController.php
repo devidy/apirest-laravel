@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FuncionarioRequest;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
@@ -25,7 +26,7 @@ class FuncionarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FuncionarioRequest $request)
     {
         return Funcionario::create($request->all());
     }
