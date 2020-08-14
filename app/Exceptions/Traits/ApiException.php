@@ -3,6 +3,7 @@
 namespace App\Exceptions\Traits;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 trait ApiException {
 
@@ -17,6 +18,10 @@ trait ApiException {
     {
         if ($e instanceof ModelNotFoundException) {
             return $this->notFoundException();
+        }
+
+        if ($e instanceof HttpException) {
+            return $this->httpException($e);
         }
 
         return $this->genericException();
@@ -48,6 +53,20 @@ trait ApiException {
             "02",
             500
         );
+    }
+
+    /**
+     * Retorna o erro de http
+     *
+     * @return void
+     */
+    protected function httpException($e)
+    { 
+      return $this->getResponse(
+        'Verbo Http não é permitido',
+        '03',
+        $e->getStatusCode()
+      );
     }
 
     /**
