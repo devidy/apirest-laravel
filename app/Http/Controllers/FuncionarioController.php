@@ -7,6 +7,7 @@ use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\Funcionario as FuncionarioResource;
+use App\Http\Resources\Funcionarios as FuncionarioCollection;
 
 class FuncionarioController extends Controller
 {
@@ -17,7 +18,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        return response()->json(Funcionario::get(), Response::HTTP_OK);
+        return response()->json(new FuncionarioCollection(Funcionario::get()), Response::HTTP_OK);
     }
 
     /**
