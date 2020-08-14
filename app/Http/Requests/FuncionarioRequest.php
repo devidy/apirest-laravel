@@ -26,7 +26,8 @@ class FuncionarioRequest extends FormRequest
         return [
             'name' => 'required',
             'cpf' => 'required',
-            'admissao' => 'required'
+            'admissao' => 'required',
+            'endereco' => 'required'
         ];
     }
 }

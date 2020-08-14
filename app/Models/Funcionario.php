@@ -11,7 +11,7 @@ class Funcionario extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'cpf', 'admissao', 'status'];
+    protected $fillable = ['name', 'cpf', 'admissao', 'status', 'endereco'];
 
     /**
      * Faz conversão na hora da serialização

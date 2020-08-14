@@ -18,7 +18,7 @@ class FuncionarioController extends Controller
      */
     public function index(Request $request)
     {
-        $funcionarios = Funcionario::paginate(2);
+        $funcionarios = Funcionario::paginate(3);
         return (new FuncionarioCollection($funcionarios))
                     ->response()
                     ->setStatusCode(Response::HTTP_OK);

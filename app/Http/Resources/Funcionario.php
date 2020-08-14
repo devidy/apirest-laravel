@@ -21,6 +21,7 @@ class Funcionario extends JsonResource
             "status" => $this->status,
             "admissao" => $this->admissao,
             "demissao" => $this->demissao,
+            "endereco" => $this->endereco,
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at
         ];

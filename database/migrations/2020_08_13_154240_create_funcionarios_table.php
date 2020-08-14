@@ -20,6 +20,7 @@ class CreateFuncionariosTable extends Migration
             $table->datetime('admissao');
             $table->datetime('demissao')->nullable()->default(NULL);
             $table->integer('status')->default(0);
+            $table->string('endereco', 100);
             $table->timestamps();
         });
     }
