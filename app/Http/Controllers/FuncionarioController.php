@@ -56,14 +56,9 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, Funcionario $funcionario)
     {
-        try {
-            $funcionario->update($request->all());
-            return response()->json(['message' => 'Atualizado'], Response::HTTP_OK);
-        } catch (\Throwable $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+        $funcionario->update($request->all());
+
+        return [];
     }
 
     /**
@@ -74,13 +69,8 @@ class FuncionarioController extends Controller
      */
     public function destroy(Funcionario $funcionario)
     {
-        try {
-            $funcionario->delete();
-            return response()->json(['message' => 'Deletado'], Response::HTTP_OK);
-        } catch (\Throwable $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+        $funcionario->delete();
+
+        return [];
     }
 }
