@@ -27,13 +27,7 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            return Funcionario::create($request->all());
-        } catch (\Throwable $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+        return Funcionario::create($request->all());
     }
 
     /**
