@@ -22,4 +22,4 @@ Route::get('/funcionarios', 'FuncionarioController@index');
 Route::get('/funcionarios/{funcionario}', 'FuncionarioController@show');
 Route::post('/funcionarios', 'FuncionarioController@store');
 Route::put('/funcionarios/{funcionario}', 'FuncionarioController@update');
-Route::delete('/funcionarios', 'FuncionarioController@destroy');
+Route::delete('/funcionarios/{funcionario}', 'FuncionarioController@destroy');
