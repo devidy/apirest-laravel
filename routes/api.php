@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/funcionarios', 'FuncionarioController@index');
 Route::get('/funcionarios/{funcionario}', 'FuncionarioController@show');
 Route::post('/funcionarios', 'FuncionarioController@store');
